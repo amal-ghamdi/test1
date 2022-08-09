@@ -37,9 +37,9 @@ jobs:
     - name: Test with pytest
       run: |
         #conda create -n fenicsproject -c conda-forge fenics
-        conda create envA
+        conda create -n myenv python
         conda init bash
         #conda activate fenicsproject
-        conda activate envA
+        conda activate myenv
         conda install pytest
         pytest tests/test_dolfin.py
