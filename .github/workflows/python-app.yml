@@ -37,5 +37,5 @@ jobs:
     - name: Test with pytest
       run: |
         conda create -n fenicsproject -c conda-forge fenics
-        source activate fenicsproject
+        conda activate fenicsproject
         pytest tests/test_dolfin.py
