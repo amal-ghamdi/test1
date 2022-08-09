@@ -36,7 +36,7 @@ jobs:
         run: |
           conda config --set always_yes yes
           conda config --add channels conda-forge
-          mamba create -n fenicsproject -c conda-forge fenics superlu_dist=6.2.0=h050a5a1_4
+          mamba create -n fenicsproject -c conda-forge fenics 
           conda activate fenicsproject
           which python
           python -c "from dolfin import *"
@@ -47,13 +47,6 @@ jobs:
           conda activate fenicsproject
           python -m pip install --upgrade pip
           python -m pip install pytest
-          python -m pip install pytest-cov
-          python -m pip install pytest-check
-          python -m pip install coveralls
-          python -m pip install fdm
-          #python -m pip install git+https://github.com/dolfin-adjoint/pyadjoint.git@master
-          #python -m pip install git+https://github.com/IvanYashchuk/fecr.git@master
-          #python -m pip install pymc3
 
       - name: Install fenics-pymc3
         shell: bash -l {0}
@@ -63,19 +56,8 @@ jobs:
 
       - name: Test with pytest
         shell: bash -l {0}
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: |
           conda activate fenicsproject
-          python -c "import sys; print('\n'.join(sys.path))"
-          export HDF5_DISABLE_VERSION_CHECK=1
-          python -m pytest --cov=fenics_pymc3 --cov-config=tests/.coveragerc tests -vvv
+          python -m pytest tests -vvv
 
-      #- name: Send coverage
-      #  shell: bash -l {0}
-      #  env:
-      #    COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-      #  run: |
-      #    conda activate fenicsproject
-      #    coveralls
-      #    bash <(curl -s https://codecov.io/bash)
+
