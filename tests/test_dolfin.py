@@ -1,6 +1,5 @@
 import pytest
 
-
 def test_dolfin():
     import dolfin as dl
     mesh = dl.UnitSquareMesh(20,20)
