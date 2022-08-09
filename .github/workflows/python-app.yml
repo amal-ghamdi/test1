@@ -36,6 +36,10 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        conda create -n fenicsproject -c conda-forge fenics
-        conda activate fenicsproject
+        #conda create -n fenicsproject -c conda-forge fenics
+        conda create envA
+        conda init bash
+        #conda activate fenicsproject
+        conda activate envA
+        conda install pytest
         pytest tests/test_dolfin.py
