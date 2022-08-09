@@ -35,10 +35,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
+      shell: bash -l {0}
       run: |
         #conda create -n fenicsproject -c conda-forge fenics
         conda create -n myenv python
-        conda init bash
         #conda activate fenicsproject
         conda activate myenv
         conda install pytest
