@@ -1,4 +1,4 @@
-name: FEniCS
+name: FEniCS_tests
 
 on:
   push:
