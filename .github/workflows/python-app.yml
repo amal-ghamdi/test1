@@ -38,5 +38,6 @@ jobs:
         $CONDA/bin/flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
+        $CONDA/bin/conda activate base
         $CONDA/bin/conda install pytest
         $CONDA/bin/pytest tests/test_dolfin.py
