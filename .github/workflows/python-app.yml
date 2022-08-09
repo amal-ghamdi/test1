@@ -27,6 +27,7 @@ jobs:
       run: |
         # $CONDA is an environment variable pointing to the root of the miniconda directory
         $CONDA/bin/conda env update --file .github/workflows/environment.yml --name base
+        $CONDA/bin/conda config --append channels conda-forge
         $CONDA/bin/conda install fenics
     - name: Lint with flake8
       run: |
